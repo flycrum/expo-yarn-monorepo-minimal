@@ -23,6 +23,17 @@ Install it if you don't have it.
 npm install --global yarn
 ```
 
+2. Initialize yarn project. Run `yarn init`, or create the `package.json` manually. It should look something like this:
+
+> Note: All Yarn monorepos should have a "root" package.json file.
+
+```json
+{
+  "name": "monorepo",
+  "version": "1.0.0"
+}
+```
+
 ## Structure
 
 We will assume some familiar names, but you can fully customize them. After this guide, our basic structure should look like this:

@@ -95,6 +95,22 @@ In this example, we will set up a monorepo using Yarn workspaces without the noh
 
    b. Make certain `live reload` is working as expected by testing both the web (w) and native (i | a) apps. You can do this by starting those apps and making changes to the `HomeScreen` component defined within `index.tsx`. Changes should be reflected immediately.
 
+6. Create a package.
+
+   a. From within the root of the monorepo, create the package directory and initialize it with yarn.
+
+   ```bash
+   mkdir -p packages/cool-package
+   cd packages/cool-package
+   yarn init
+   ```
+
+   b. Add a simple `index.js` file to the package.
+
+   ```bash
+   echo "export const greeting = 'Hello!';" > index.js
+   ```
+
 ## Structure
 
 We will assume some familiar names, but you can fully customize them. After this guide, our basic structure should look like this:

@@ -34,6 +34,18 @@ npm install --global yarn
 }
 ```
 
+3. Set up yarn workspaces. Yarn and other tooling have a concept called "workspaces". Every package and app in our repository has its own workspace. Before we can use them, we have to instruct Yarn where to find these workspaces. We can do that by setting the workspaces property using glob patterns, in the package.json:
+
+> Note: Yarn workspaces require the root package.json to be private.
+
+```json
+{
+  "name": "monorepo",
+  "version": "1.0.0",
+  "workspaces": ["apps/*", "packages/*"]
+}
+```
+
 ## Structure
 
 We will assume some familiar names, but you can fully customize them. After this guide, our basic structure should look like this:

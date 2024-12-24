@@ -111,6 +111,63 @@ In this example, we will set up a monorepo using Yarn workspaces without the noh
    echo "export const greeting = 'Hello!';" > index.js
    ```
 
+7. Add the package to the app.
+
+   a. Add `packages/cool-package` to `apps/cool-app/package.json` so we can use it within our Expo app.
+
+   ```bash
+   yarn add cool-package
+   ```
+
+   Note: Like standard packages, we need to add our cool-package as a dependency to our cool-app. The main difference between a standard package, and one from the monorepo, is you'll always want to use the "current state of the package" instead of a version. Let's add cool-package to our app by adding "cool-package": "\*" to our app package.json file.
+
+   b. After adding the package as a dependency, run yarn install to install or link the dependency to your app.
+
+   ```bash
+   yarn install
+   ```
+
+   c. You should now be able to use the package inside your app! To test this, let's edit the `HomeScreen` component defined within `index.tsx` again:
+
+   ```js
+   import { greeting } from "cool-package";
+
+   // ...
+
+   <ThemedView style={styles.titleContainer}>
+     <ThemedText type="title">{greeting}</ThemedText>
+     <HelloWave />
+   </ThemedView>;
+
+   // ...
+   ```
+
+   d. When running the apps, you should now see `Hello!` displayed instead of `Welcome!`.
+
+## Issues
+
+<details>
+  <summary>
+    Error: <span style="color: red;">Unable to resolve "../../App" from "node_modules/expo/AppEntry.js"</span>
+  </summary>
+  &nbsp;
+
+> Note: as seen when running `npx expo start`
+
+<strong>Problem:</strong> you're likely trying to run the app from the wrong location -- like the root of the monorepo, but the app is located in the `apps/cool-app` directory.
+
+<strong>Solution:</strong> run the command from the `apps/cool-app` directory instead.
+
+</details>
+
+Also:
+
+- With monorepos comes added complexity and issues you'll need to solve along the way
+- Expo SDK 50 and higher has improved support for more complete node_modules patterns, such as isolated modules. Unfortunately, React Native can still cause issues when installing multiple versions inside a single monorepo. Because of that, it's recommended to only use a single version of React Native. You can check if your monorepo has multiple React Native versions and why they are installed through the package manager you use.
+  ```bash
+  yarn why react-native
+  ```
+
 ## Structure
 
 We will assume some familiar names, but you can fully customize them. After this guide, our basic structure should look like this:

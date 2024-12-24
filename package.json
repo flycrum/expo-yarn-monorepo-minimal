@@ -5,5 +5,11 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "scripts": {
+    "start": "yarn workspace cool-app start",
+    "start:android": "yarn workspace cool-app android",
+    "start:ios": "yarn workspace cool-app ios",
+    "start:web": "yarn workspace cool-app web"
+  }
 }

@@ -46,6 +46,15 @@ npm install --global yarn
 }
 ```
 
+4. Create our first Expo app. Make sure to run the last command which moves the .gitignore file to the root of the monorepo.
+
+```bash
+mkdir apps/cool-app
+cd apps/cool-app
+yarn create expo apps/cool-app
+mv apps/cool-app/.gitignore ./
+```
+
 ## Structure
 
 We will assume some familiar names, but you can fully customize them. After this guide, our basic structure should look like this:
